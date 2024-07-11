@@ -92,7 +92,6 @@ const plants=[
  
  }
 
-
 const getPlants = (req,res)=>{
     res.json({
        success:true,
@@ -101,7 +100,7 @@ const getPlants = (req,res)=>{
     })
  }
 
- const getPlantId =(req,res)=>{
+const getPlantId =(req,res)=>{
     const {id} = req.params
     const plant = plants.find((p)=>p.id==id)
     
@@ -110,9 +109,9 @@ const getPlants = (req,res)=>{
        data:plant || null,
        message:plant ? "Plant Fetch Successfully" : "Plant not found"
     })
-    }
+ }
 
-    const putPlantID=(req,res)=>{
+const putPlantID=(req,res)=>{
 
         const{
            name,
@@ -163,11 +162,9 @@ const getPlants = (req,res)=>{
            message: "Plant updated Successfully"
         })
      
-     }
+ }
 
-
-
-     const deletePlantID =(req,res)=>{
+const deletePlantID =(req,res)=>{
         const {id}=req.params
            let index=-1
         
@@ -194,12 +191,13 @@ const getPlants = (req,res)=>{
               data:null 
            })
         
-        }
+}
 
- export  { 
-    postPlant,
-    getPlants,
-    getPlantId ,
-    putPlantID,
-    deletePlantID
- }
+export  
+        { 
+          postPlant,
+          getPlants,
+          getPlantId,
+          putPlantID,
+          deletePlantID
+        }
