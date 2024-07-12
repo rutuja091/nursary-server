@@ -34,7 +34,7 @@ import Plant from "./../models/Plant.js"
 
 const getPlants = async(req,res)=>{
 
-   for(let i=0; i<999999999; i++){}
+
 
    const allPlants = await Plant.find()
 
