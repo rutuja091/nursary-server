@@ -29,7 +29,7 @@ const dbConnection=async()=>{
       console.log("MongoDB connected successfully...📦")
    }
    else{
-      console.log("mongoDB not connected...❌")
+      console.log("MongoDB not connected...❌")
    }
 }
 

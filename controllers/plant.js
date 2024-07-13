@@ -26,7 +26,7 @@ import Plant from "./../models/Plant.js"
        res.json({
           success:true,
           data:savedPlant,
-          message:"new plant added successfully"
+          message:"New Plant Added Successfully"
        })
  
  
@@ -35,13 +35,12 @@ import Plant from "./../models/Plant.js"
 const getPlants = async(req,res)=>{
 
 
-
-   const allPlants = await Plant.find()
+   const allPlants = await Plant.find().sort({updateddAt:-1})
 
     res.json({
        success:true,
        data:allPlants,
-       message:"all plant fetch successfully"
+       message:"All Plant Fetch Successfully"
     })
  }
 
@@ -84,7 +83,7 @@ const putPlantID= async(req,res)=>{
 
      res.json({
       success:true,
-      message:`plant updated successfully`,
+      message:`Plant Updated Successfully`,
       data:updatedPlant
      })
  }
@@ -97,7 +96,7 @@ const deletePlantID =async(req,res)=>{
         
            res.json({
               success:true,
-              message:"plant deleted successfully",
+              message:"Plant Deleted Successfully",
               data:null 
            })
         
