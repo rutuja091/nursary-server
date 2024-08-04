@@ -1,60 +1,55 @@
-import express from "express"
-import dotenv from "dotenv"
+import express from 'express'
+import dotenv  from 'dotenv'
 dotenv.config()
-import mongoose from "mongoose"
-import cors from "cors"
-import {getHealth } from "./controllers/health.js"
+import mongoose from 'mongoose'
+import cors from 'cors'
 
+import { getHealth } from './controllers/health.js'
 import {
-   postMobile,
-   getMobiles,
-   getMobileId,
-   putMobileID,
-   deleteMobileID
-       } from "./controllers/mobile.js"
+  postPlant ,
+  getPlants,
+  getPlantId,
+  putPlantId,
+  deletePlantID
+ } from "./controllers/plant.js";
 
+import  { handlePageNotFound } from './controllers/errors.js';
 
-import{handlePageNotFound} from "./controllers/errors.js"
-
-
-const app= express()
+const app =express()
 app.use(cors())
 app.use(express.json())
 
+const dbconnection =async()=>{
 
-
-//database connection
-const dbConnection=async()=>{
-   const conn = await mongoose.connect(process.env.MONGO_URL)
-
-   if (conn){
-      console.log("MongoDB connected successfully...📦")
-   }
-   else{
-      console.log("MongoDB not connected...❌")
-   }
+  const conn =  await mongoose.connect(process.env.MONGO_URL)
+  if(conn){
+    console.log("MongoDB connected 📦")
+  }
+  else{
+    console.log("MongoDB  Not connected ❌")
+  }
 }
-
-dbConnection();
-
-
+dbconnection();
 
 app.get("/health", getHealth)
 
-app.post("/mobile", postMobile)
 
-app.get("/mobiles", getMobiles)
+app.post("/plant", postPlant)
 
-app.get("/mobile/:id", getMobileId)
+app.get("/plants", getPlants)
 
-app.put("/mobile/:id", putMobileID)
+app.get("/plant/:id", getPlantId)
 
-app.delete("/mobile/:id", deleteMobileID)
+app.put("/plant/:id", putPlantId)
 
-app.use("*",handlePageNotFound)
+app.delete("/plant/:id", deletePlantID)
 
- const PORT = process.env.PORT
 
- app.listen(PORT,()=>{
-    console.log(`Server is running on ${PORT}`)
- })
+app.use("*", handlePageNotFound)
+
+
+
+const PORT = process.env.PORT ||5000;
+app.listen(PORT,()=>{{}
+console.log(`Server is running on port ${PORT}`)
+})
