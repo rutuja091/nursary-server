@@ -6,12 +6,14 @@ import cors from "cors"
 import {getHealth } from "./controllers/health.js"
 
 import {
-        postPlant,
-        getPlants,
-        getPlantId,
-        putPlantID,
-        deletePlantID
-       } from "./controllers/plant.js"
+   postMobile,
+   getMobiles,
+   getMobileId,
+   putMobileID,
+   deleteMobileID
+       } from "./controllers/mobile.js"
+
+
 import{handlePageNotFound} from "./controllers/errors.js"
 
 
@@ -39,15 +41,15 @@ dbConnection();
 
 app.get("/health", getHealth)
 
-app.post("/plant", postPlant)
+app.post("/mobile", postMobile)
 
-app.get("/plants", getPlants)
+app.get("/mobiles", getMobiles)
 
-app.get("/plant/:id", getPlantId)
+app.get("/mobile/:id", getMobileId)
 
-app.put("/plant/:id", putPlantID)
+app.put("/mobile/:id", putMobileID)
 
-app.delete("/plant/:id", deletePlantID)
+app.delete("/mobile/:id", deleteMobileID)
 
 app.use("*",handlePageNotFound)
 

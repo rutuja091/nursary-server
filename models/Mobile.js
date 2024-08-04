@@ -1,10 +1,10 @@
 import {Schema ,model} from "mongoose"
 
 
-const plantSchema = new Schema
+const mobileSchema = new Schema
 ({
        name:String,
-       category:String,
+       company:String,
        image: String,
        price:Number,
        description: String
@@ -12,6 +12,6 @@ const plantSchema = new Schema
       timestamps:true 
 })
 
-const Plant = model("Plant" , plantSchema)
+const Mobile = model("Mobile" , mobileSchema)
 
-export default Plant
+export default Mobile
